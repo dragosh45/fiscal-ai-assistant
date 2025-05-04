@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Flask uploads
+uploads/
+
+# Virtualenv
+venv/
+env/
+
+# Environment variables
+.env
+
+# IDE files (optional, e.g., for PyCharm)
+.idea/
+*.iml
+
+# Database files (if using SQLite)
+*.db
+
+# Logs (if any)
+*.log
