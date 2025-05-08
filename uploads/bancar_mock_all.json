@@ -1,0 +1,50 @@
+[
+    {
+        "id_tranzactie": "TXN001",
+        "data": "2025-04-20",
+        "tip": "Transfer bancar",
+        "valoare": 3200,
+        "valuta": "RON",
+        "partener": "Firma ABC",
+        "cont_debitor": "RO49BANK0001",
+        "cont_creditor": "RO72BANK9999",
+        "descriere": "Plată furnizor servicii",
+        "categorie": "Achiziții"
+    },
+    {
+        "id_tranzactie": "TXN002",
+        "data": "2025-04-22",
+        "tip": "Încasare",
+        "valoare": 7000,
+        "valuta": "RON",
+        "partener": "Client SRL",
+        "cont_debitor": "RO91BANK7777",
+        "cont_creditor": "RO01BANK0000",
+        "descriere": "Încasare factură #234",
+        "categorie": "Vânzări"
+    },
+    {
+        "id_tranzactie": "TXN003",
+        "data": "2025-04-25",
+        "tip": "Plată",
+        "valoare": 1450,
+        "valuta": "RON",
+        "partener": "Furnizor Global SRL",
+        "cont_debitor": "RO99BANK1111",
+        "cont_creditor": "RO88BANK2222",
+        "descriere": "Achiziție echipamente IT",
+        "categorie": "Achiziții"
+    },
+    {
+        "id_tranzactie": "TXN004",
+        "data": "2025-04-26",
+        "tip": "Încasare",
+        "valoare": 5000,
+        "valuta": "RON",
+        "partener": "Client Nou SRL",
+        "cont_debitor": "RO55BANK3333",
+        "cont_creditor": "RO44BANK4444",
+        "descriere": "Plată factură servicii #567",
+        "categorie": "Vânzări"
+    }
+]

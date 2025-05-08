@@ -1,0 +1,3 @@
+Data tranzacție,Tip tranzacție,Client/Furnizor,Valoare,TVA (%),Categorie,Detalii
+2025-01-05,Factură primită,Furnizor ABC SRL,1200,19,Achiziții,Factura #567
+2025-01-12,Factură emisă,Client XYZ SRL,3000,19,Vânzări,Factura #890

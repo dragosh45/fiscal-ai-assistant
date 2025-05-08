@@ -1,0 +1,3 @@
+Număr document,Data emiterii,Tip document,Nume client,CIF client,Valoare totală,Valoare TVA,Valută,Status plată,Descriere
+INV-001,2024-12-15,Factura,Client SRL,RO123456,1500,285,RON,Plătit,Servicii livrate
+INV-002,2025-01-10,Factura,AltClient SRL,RO654321,2000,380,RON,Neplătit,Produse livrate

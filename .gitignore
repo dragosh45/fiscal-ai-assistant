@@ -3,9 +3,6 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Flask uploads
-uploads/
-
 # Virtualenv
 venv/
 env/
