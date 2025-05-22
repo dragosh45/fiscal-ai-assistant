@@ -1,0 +1,38 @@
+[
+  {
+    "id_tranzactie": "BANK001",
+    "data": "2024-05-01",
+    "tip": "Încasare",
+    "partener": "Client A",
+    "valoare": 1200,
+    "valuta": "RON",
+    "cont_debitor": "5121",
+    "cont_creditor": "4111",
+    "descriere": "Plată factură INV001",
+    "categorie": "Vânzări"
+  },
+  {
+    "id_tranzactie": "BANK002",
+    "data": "2024-05-02",
+    "tip": "Plată",
+    "partener": "Furnizor X",
+    "valoare": -800,
+    "valuta": "RON",
+    "cont_debitor": "4011",
+    "cont_creditor": "5121",
+    "descriere": "Plată factură FUR001",
+    "categorie": "Achiziții"
+  },
+  {
+    "id_tranzactie": "BANK003",
+    "data": "2024-05-03",
+    "tip": "Încasare",
+    "partener": "Client B",
+    "valoare": 1500,
+    "valuta": "RON",
+    "cont_debitor": "5121",
+    "cont_creditor": "4111",
+    "descriere": "Plată factură INV002",
+    "categorie": "Vânzări"
+  }
+]

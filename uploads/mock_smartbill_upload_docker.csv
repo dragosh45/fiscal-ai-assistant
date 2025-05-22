@@ -1,0 +1,6 @@
+Număr document,Data emiterii,Tip document,Nume client,CIF client,Valoare totală,Valoare TVA,Valută,Status plată,Descriere
+INV001,2024-05-01,Factura,Client A,RO123456,1000,190,RON,Plătit,Consultanță
+INV002,2024-05-02,Factura,Client B,RO234567,1500,285,RON,Neplătit,Mentorat
+INV003,2024-05-03,Factura,Client C,RO345678,800,152,RON,Plătit,Training
+INV004,2024-05-04,Factura,Client D,RO456789,1200,228,RON,Neplătit,Servicii IT
+INV005,2024-05-05,Factura,Client E,RO567890,950,180,RON,Plătit,Suport tehnic
