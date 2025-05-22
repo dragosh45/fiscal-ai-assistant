@@ -8,7 +8,7 @@ venv/
 env/
 
 # Environment variables
-.env
+.env.local
 
 # IDE files (optional, e.g., for PyCharm)
 .idea/

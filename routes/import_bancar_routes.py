@@ -2,39 +2,34 @@ from flask import Blueprint, jsonify, flash, redirect, url_for
 from models import db, Tranzactie
 from datetime import datetime
 import requests
-import hashlib  # adăugat pentru fallback id_tranzactie
+import hashlib
 import os, json
 
-api_blueprint = Blueprint('api_routes', __name__)
+bancar_bp = Blueprint('bancar_bp', __name__)
 
 
-@api_blueprint.route('/api/bancar', methods=['GET'])
-def api_bancar_demo():
-    file_path = os.path.join('uploads', 'bancar_mock_all.json')
+# Funcție comună pentru încărcarea datelor bancare din fișier JSON
+def load_bancar_data():
+    file_path = os.path.join('uploads', 'bancar_mock_all_docker.json')
+    print(f">>> Se încarcă date bancare din: {file_path}")
     with open(file_path, encoding='utf-8') as f:
-        data = json.load(f)
-    return jsonify(data)
+        return json.load(f)
 
 
-@api_blueprint.route('/import-bancar')
+@bancar_bp.route('/import-bancar')
 def import_bancar():
     try:
-        response = requests.get("http://localhost:5000/api/bancar")
-        response.raise_for_status()
-        data = response.json()
-
+        data = load_bancar_data()
+        added_count = 0
         for entry in data:
             id_tranzactie = entry.get("id_tranzactie")
-
-            # Dacă ID-ul este lipsă sau invalid (None, NaN), generează fallback ID
             if not id_tranzactie or str(id_tranzactie).lower() == 'nan':
                 key = f"{entry.get('data')}_{entry.get('valoare')}_{entry.get('partener')}_{entry.get('tip')}"
                 id_tranzactie = hashlib.sha1(key.encode()).hexdigest()
 
-            # Verifică dacă deja există
             existing = Tranzactie.query.filter_by(id_tranzactie=id_tranzactie).first()
             if existing:
-                continue  # Sărim peste duplicate
+                continue
 
             tranzactie = Tranzactie(
                 id_tranzactie=id_tranzactie,
@@ -56,11 +51,12 @@ def import_bancar():
                 extra_data=entry
             )
             db.session.add(tranzactie)
+            added_count += 1
 
         db.session.commit()
-        flash("✅ Tranzacțiile bancare au fost importate cu succes.")
+        flash(f"{added_count} tranzacții bancare au fost importate cu succes.", category="bancar")
 
     except Exception as e:
-        flash(f"❌ Eroare la importul datelor bancare: {e}")
+        flash(f"Eroare la importul datelor bancare: {e}", category="bancar")
 
-    return redirect(url_for('upload_routes.upload_file'))
+    return redirect(url_for('upload_bp.upload_file'))  # ajustează cu blueprint-ul corect

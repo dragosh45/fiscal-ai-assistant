@@ -4,6 +4,7 @@ from flask import Flask
 
 db = SQLAlchemy()
 
+
 class Tranzactie(db.Model):
     __tablename__ = 'tranzactii'
     id = db.Column(db.Integer, primary_key=True)
@@ -25,3 +26,27 @@ class Tranzactie(db.Model):
     categorie_financiara = db.Column(db.String(50))
     timestamp_import = db.Column(db.DateTime, default=datetime.utcnow)
     extra_data = db.Column(db.JSON)
+
+
+class TranzactieEFactura(db.Model):
+    __tablename__ = 'tabel_tranzactii_efactura'
+
+    id = db.Column(db.Integer, primary_key=True)
+    invoice_number = db.Column(db.String(100))
+    issue_date = db.Column(db.Date)
+    currency = db.Column(db.String(3))
+    supplier_name = db.Column(db.String(255))
+    supplier_cui = db.Column(db.String(50))
+    buyer_name = db.Column(db.String(255))
+    buyer_cui = db.Column(db.String(50))
+    product_code = db.Column(db.String(100))
+    product_description = db.Column(db.Text)
+    quantity = db.Column(db.Float)
+    unit_price = db.Column(db.Float)
+    vat_rate = db.Column(db.Float)
+    vat_amount = db.Column(db.Float)
+    line_total = db.Column(db.Float)
+    total_amount = db.Column(db.Float)
+    payment_due_date = db.Column(db.Date)
+    invoice_type = db.Column(db.String(20))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)

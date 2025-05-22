@@ -5,7 +5,7 @@ import os
 import json
 import hashlib  # sub celelalte importuri
 
-upload_blueprint = Blueprint("upload_routes", __name__)
+upload_bp = Blueprint("upload_bp", __name__)
 
 
 def detect_and_transform(df):
@@ -65,7 +65,7 @@ def generate_id_tranzactie(row):
     return hashlib.sha1(key.encode()).hexdigest()
 
 
-@upload_blueprint.route("/", methods=["GET", "POST"])
+@upload_bp.route("/upload-file", methods=["GET", "POST"])
 def upload_file():
     if request.method == "POST":
         file = request.files.get("file")
@@ -81,6 +81,8 @@ def upload_file():
         try:
             df = pd.read_csv(path) if filename.endswith(".csv") else pd.read_excel(path)
             df_trans, sursa = detect_and_transform(df)
+
+            added_count = 0  # adaugă înainte de for
 
             for _, row in df_trans.iterrows():
                 # Preluăm id_tranzactie
@@ -117,11 +119,12 @@ def upload_file():
                     extra_data=json.loads(row.to_json()),
                 )
                 db.session.add(tranzactie)
+                added_count += 1
             db.session.commit()
 
             flash(
-                f"✅ Fișier '{filename}' procesat și salvat cu succes ca sursă: {sursa}."
-            )
+                f"✅ Fișier '{filename}' procesat și salvat cu succes ca sursă: {sursa}. {added_count} tranzacții adăugate.",
+                category="upload")
 
         except Exception as e:
             flash(f"❌ Eroare la procesare: {e}")
