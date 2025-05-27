@@ -1,4 +1,8 @@
-🧾 DataFlowDynamics – Fiscal Monitoring & VAT Automation Platform
+Deployed on fly.io:
+https://contabil-ai.fly.dev/
+
+
+🧾 ContabilAI – Fiscal Monitoring & VAT Automation Platform
 A lightweight ETL + AI system that helps Romanian businesses upload accounting documents (SmartBill/Custom/Bank API), transform them into ANAF-compliant e-Invoices, calculate VAT declarations (D300/D394), detect anomalies, and export XML files ready for submission.
 
 🔧 Key Features
