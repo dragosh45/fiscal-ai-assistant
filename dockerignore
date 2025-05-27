@@ -1,0 +1,36 @@
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+
+# IDE/Editor config
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# Environment configs
+.env
+.env.*
+!.env.production
+
+# SQLite database
+*.db
+
+# Git-related
+.git/
+.gitignore
+
+# Uploads (optional – exclude if not used in container)
+uploads/
+
+# Temp files
+*.swp
+*.bak
+*.tmp

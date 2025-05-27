@@ -14,6 +14,7 @@ from routes.transform_efactura_to_xml_routes import transform_xml_bp
 app = Flask(__name__)
 app.config.from_object(Config)
 db.init_app(app)
+print("👉 Connecting to DB:", app.config["SQLALCHEMY_DATABASE_URI"])
 
 # Înregistrează blueprints
 app.register_blueprint(upload_bp)
@@ -24,8 +25,14 @@ app.register_blueprint(transform_xml_bp)
 # Creează folderul pentru uploads dacă nu există
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
+import sys
+
+print("🧠 main.py loaded", file=sys.stderr, flush=True)
+print("🔧 Creating tables in DB...", file=sys.stderr, flush=True)
+
 # Creează tabelele la prima rulare (doar dacă nu există)
 with app.app_context():
+    print("🔧 Creating tables in DB...", file=sys.stderr, flush=True)
     db.create_all()
 
 
