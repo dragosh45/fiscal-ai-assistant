@@ -1,90 +1,140 @@
-Deployed on fly.io:
-https://contabil-ai.fly.dev/
+# 🧾 ContabilAI – Fiscal Monitoring & VAT Automation Platform
 
+**Deployed on Fly.io:**  
+👉 [https://contabil-ai.fly.dev](https://contabil-ai.fly.dev)
 
-🧾 ContabilAI – Fiscal Monitoring & VAT Automation Platform
-A lightweight ETL + AI system that helps Romanian businesses upload accounting documents (SmartBill/Custom/Bank API), transform them into ANAF-compliant e-Invoices, calculate VAT declarations (D300/D394), detect anomalies, and export XML files ready for submission.
+ContabilAI is a lightweight ETL + AI system that helps Romanian businesses:
 
-🔧 Key Features
-👤 Upload Accounting Documents (CSV/XLSX):
+- Upload accounting documents (SmartBill/Custom/Bank API)
+- Transform them into ANAF-compliant e-Invoices
+- Calculate VAT declarations (D300/D394)
+- Detect anomalies
+- Export XML files ready for submission
 
-Supports SmartBill exports or manually structured spreadsheets.
-Automatic format detection and normalization into a unified internal schema.
-🏦 Bank API Import (mock):
+---
 
-Simulates integration with banking transaction APIs.
-JSON-based demo transactions imported into the database.
-📄 e-Factura Normalization & XML Generation (ANAF):
+## 🚀 Key Features
 
-Converts normalized transactions into UBL RO_CIUS XML format.
-Downloads valid e-Invoice XML for SPV/ANAF platform.
-📊 VAT Automation & Declarations:
+### 📤 Upload Accounting Documents (CSV/XLSX)
+- Supports SmartBill exports or custom spreadsheets
+- Automatic format detection and normalization into a unified internal schema
 
-Detects VAT automatically (collected/deductible).
-Generates XML-ready Romanian D300 & D394 declarations.
-📈 AI-Powered Analytics (coming soon):
+### 🏦 Bank API Import (mock)
+- Simulates integration with banking transaction APIs
+- JSON-based mock transactions imported into the database
 
-KPIs: monthly revenue, due invoices, collected VAT.
-Forecasting: future income & cash flow.
-Anomaly detection: duplicated invoices, suspicious values.
-🛠️ Technologies Used
-Component	Technology	Reason
-Backend	Flask + SQLAlchemy	Lightweight, fast, Python-native
-Database	PostgreSQL	Reliable, relational, scalable
-ETL	pandas	Efficient tabular data manipulation
-XML Export	lxml	ANAF-compatible structured output
-Containerized	Docker + docker-compose	Easy deploy & consistency
-Production WSGI	gunicorn	Scalable production Flask server
-Frontend UI	HTML + Bootstrap	Simple web UI for user operations
-📁 Project Structure
-code_for_readme/
+### 📄 e-Factura Normalization & XML Generation (ANAF)
+- Converts transactions to UBL RO_CIUS XML
+- Downloads valid e-Invoice XML for SPV/ANAF platform
+
+### 📊 VAT Automation & Declarations
+- Detects collected and deductible VAT
+- Generates D300 & D394 XML declarations
+
+### 🧠 AI-Powered Analytics (coming soon)
+- KPIs: Monthly revenue, due invoices, collected VAT
+- Forecasting: Future income & cash flow
+- Anomaly detection: Duplicated invoices, suspicious values
+
+---
+
+## 🛠️ Technologies Used
+
+| Component | Technology | Purpose |
+|----------|------------|---------|
+| Backend | Flask + SQLAlchemy | Lightweight, fast, Python-native |
+| Database | PostgreSQL | Relational, scalable, reliable |
+| ETL | pandas | Tabular data manipulation |
+| XML Export | lxml | ANAF-compliant UBL format |
+| Containerization | Docker + docker-compose | Consistency and easy deploy |
+| Production | gunicorn | WSGI server for Flask |
+| Frontend UI | HTML + Bootstrap | Simple upload interface |
+
+---
+
+## 📁 Project Structure
+
+fiscal-ai-assistant/
 │
-├── main.py                     # Flask entry point
-├── config.py                   # DB config, .env handling
-├── requirements.txt            # Python dependencies
-├── Dockerfile                  # Web service Docker build
-├── docker-compose.yml          # PostgreSQL + Flask app config
-├── models.py                   # SQLAlchemy models
+├── main.py # Flask entry point
+├── config.py # DB config
+├── requirements.txt # Python dependencies
+├── Dockerfile # Web service Docker build
+├── docker-compose.yml # PostgreSQL + Flask stack config
+├── models.py # SQLAlchemy DB models
 │
-├── routes/                     # Modular route handling
-│   ├── upload_file_routes.py
-│   ├── import_bancar_routes.py
-│   ├── transform_efactura_routes.py
-│   └── transform_efactura_to_xml_routes.py
+├── routes/ # Modular route handling
+│ ├── upload_file_routes.py
+│ ├── import_bancar_routes.py
+│ ├── transform_efactura_routes.py
+│ └── transform_efactura_to_xml_routes.py
 │
-├── templates/                  # HTML upload page
-│   └── upload.html
-│
-├── uploads/                    # Uploaded/generated files
-└── .env.local / .env.docker    # Environment-specific configs
-🚀 Installation & Running
-🧪 Run Locally (with PostgreSQL installed):
-Install requirements:
+├── templates/ # HTML upload form
+│ └── upload.html
+├── uploads/ # Uploaded/generated files
+└── .env.local / .env.docker # Environment variables
+
+yaml
+Copy
+Edit
+
+---
+
+## 🧪 Running Locally
+
+### ▶️ With PostgreSQL Installed
+
+1. Install dependencies:
+```bash
 pip install -r requirements.txt
 Set up .env.local:
+
+env
+Copy
+Edit
 DB_USER=postgres
 DB_PASSWORD=your_pass
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=tranzactii_DB
 FLASK_ENV=development
-Launch app:
+Launch the app:
+
+bash
+Copy
+Edit
 python main.py
-🐳 Run with Docker (Recommended):
+🐳 With Docker (Recommended)
 Set up .env.docker:
+
+env
+Copy
+Edit
 DB_USER=postgres
 DB_PASSWORD=password
 DB_NAME=tranzactii_db
 DB_HOST=db
 DB_PORT=5432
-Start app with:
+Start app:
+
+bash
+Copy
+Edit
 docker-compose up --build
-Access the UI at: http://localhost:5000
-📁 Test Files (included or mock):
-mock_smartbill.csv – SmartBill invoice example
-mock_propriu.csv – Custom transaction file
+Access UI:
+http://localhost:5000
+
+📂 Test Files (included/mocked)
+mock_smartbill.csv – SmartBill invoice sample
+
+mock_propriu.csv – Custom transaction example
+
 bancar_mock_all.json – Bank API mock response
+
 📌 Suggested Extensions
-🧠 Integrate AI/ML (anomaly detection, clustering, predictions)
-☁️ CI/CD deploy to Fly.io / Render / GCP using GitHub Actions
-📄 Export e-Invoices as PDF + electronic signature (eIDAS)
+🧠 Integrate AI/ML: anomaly detection, clustering, predictions
+
+☁️ CI/CD deployment: Fly.io / Render / GCP with GitHub Actions
+
+🧾 Export invoices as PDF + e-signature (eIDAS)
+
