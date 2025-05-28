@@ -74,9 +74,6 @@ fiscal-ai-assistant/
 ├── uploads/ # Uploaded/generated files
 └── .env.local / .env.docker # Environment variables
 
-yaml
-Copy
-Edit
 
 ---
 
